@@ -29,7 +29,7 @@ class Api::V1::PinsController < ApplicationController
         false  
       end
       unless login
-        render json: { errors: user.errors }, status: 401
+        render json: { errors: "Access Denied" }, status: 401
       end
     end  
 end
