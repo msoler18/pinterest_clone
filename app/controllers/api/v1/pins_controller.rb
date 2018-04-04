@@ -19,17 +19,7 @@ class Api::V1::PinsController < ApplicationController
     def pin_params
       params.require(:pin).permit(:title, :image_url)
     end
-
-  private
-    def restrict_access
-      user = User.find_by(email: request.headers['x-user-email'])
-      if login = user
-        request.headers['x-api-token'] == user.api_token
-      else
-        false  
-      end
-      unless login
-        render json: { errors: "Access Denied" }, status: 401
-      end
-    end  
+    
 end
+
+
